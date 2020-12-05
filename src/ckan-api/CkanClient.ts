@@ -60,6 +60,11 @@ export class CkanClient {
         return response.data as CkanResponse; 
     }
 
+    async removeOrganizationByName(id: string) {
+        var response = await axios.post('/api/3/action/organization_delete', id);
+        return response.data as CkanResponse; 
+    }
+
     async getOrganizations() {
         var response = await axios.post('/api/3/action/organization_list');
         return response.data as CkanResponse; 
