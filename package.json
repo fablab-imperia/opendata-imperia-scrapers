@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "ckan": "^0.2.3",
     "dotenv": "^8.2.0"
   }
 }

@@ -1,6 +1,8 @@
-import 'dotenv/config'
+import dotenv from 'dotenv';
 
-export class ApiConfig {
-    static Url: string  = process.env.API_URL ?? '';
-    static Key: string  = process.env.API_KEY ?? '';
+dotenv.config();
+
+export const ApiConfig =  {
+    Url: process.env.API_URL ?? '',
+    Key: process.env.API_KEY ?? '',
 }
