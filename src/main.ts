@@ -6,7 +6,8 @@ import { CkanResponse } from "./ckan-api/dtos/ckan-response";
 
 async function run() {
     try {
-    var client = new Ckan(ApiConfig.Url, ApiConfig.Key);
+    const config = new ApiConfig(process.cwd())
+    var client = new Ckan(config.Url, config.Key);
 
     let response =  await client.getOrganizations() as CkanResponse<string[]>;
     console.log(response);
