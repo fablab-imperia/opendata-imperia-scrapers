@@ -1,9 +1,10 @@
-import {Client} from 'ckan';
+
 import { OrganizationsQueryParams } from './dtos/organizations-query-params';
 import { promisify } from 'util';
 import { CkanResponse } from './dtos/ckan-response';
 import { OrganizationCreateParams } from './dtos/organization-create-params';
 import { OrganizationDeleteParameters } from './dtos/organization-delete-params';
+import { Client } from 'ckan';
 
 
 export class Ckan {
