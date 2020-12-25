@@ -1,6 +1,5 @@
-import dotenv from 'dotenv';
-
-dotenv.config();
+import dotEnvExtended from 'dotenv-extended';
+dotEnvExtended.load(); 
 
 export const ApiConfig =  {
     Url: process.env.API_URL ?? '',

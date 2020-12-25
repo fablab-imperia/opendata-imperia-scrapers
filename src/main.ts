@@ -1,12 +1,12 @@
+import { ApiConfig } from "./api.config";
 import { Ckan } from "./ckan-api/ckan";
 import { CkanResponse } from "./ckan-api/dtos/ckan-response";
-import dotEnvExtended from 'dotenv-extended';
 
-dotEnvExtended.load(); 
+
 
 async function run() {
     try {
-    var client = new Ckan(process.env.API_URL as string, process.env.API_KEY as string);
+    var client = new Ckan(ApiConfig.Url, ApiConfig.Key);
 
     let response =  await client.getOrganizations() as CkanResponse<string[]>;
     console.log(response);
