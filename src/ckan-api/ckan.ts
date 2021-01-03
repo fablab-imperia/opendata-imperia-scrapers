@@ -5,6 +5,7 @@ import { CkanResponse } from './dtos/ckan-response';
 import { OrganizationCreateParams } from './dtos/organization-create-params';
 import { OrganizationDeleteParameters } from './dtos/organization-delete-params';
 import { Client } from 'ckan';
+import { DatasetDeleteParameters } from './dtos/dataset-delete-params';
 
 
 export class Ckan {
@@ -24,10 +25,6 @@ export class Ckan {
         }
     }
 
-    createDataset(datasetName: string, organizationId: string): Promise<CkanResponse<string>|string> {  
-         return this.makePromiseForAction<string>('dataset_create', { name: datasetName, owner_org: organizationId });
-    }
-
     getOrganizations(queryParams?: OrganizationsQueryParams): Promise<CkanResponse<string[]>|string> {
         return this.makePromiseForAction<string[]>('organization_list', queryParams);
     }
@@ -38,6 +35,18 @@ export class Ckan {
 
     deleteOrganization(id: OrganizationDeleteParameters): Promise<CkanResponse<string>|string> {
         return this.makePromiseForAction<any>('organization_purge', id);
+    }
+
+    getDatasets(limit?: number, offset?: number): Promise<CkanResponse<string[]>|string> {
+        return this.makePromiseForAction<string[]>('package_list',{limit: limit, offset: offset});
+    }
+
+    createDataset(datasetName: string, organizationId: string): Promise<CkanResponse<string>|string> {  
+        return this.makePromiseForAction<any>('dataset_create', { name: datasetName, owner_org: organizationId });
+    }
+
+    deleteDataset(id: DatasetDeleteParameters): Promise<CkanResponse<string>|string> {
+        return this.makePromiseForAction<any>('package_delete', id);
     }
 
 }
