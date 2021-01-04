@@ -23,7 +23,7 @@ describe('Ckan Api', function () {
     }); 
 
 
-    it('shoult be able to create a dataset for a given organiization and retrieve it', async () => {
+    it('should be able to create a dataset for a given organiization and retrieve it', async () => {
         const config = new ApiConfig();
         const client = new Ckan(config.Url, config.Key);
         await client.createOrganization({id: "my-test-organization6666", name: "my-test-organization6666"});
@@ -33,5 +33,14 @@ describe('Ckan Api', function () {
         expect(response.result).toContain("test-dataset6666");
         await client.deleteDataset({id: 'test-dataset6666'});
         await client.deleteOrganization({id: "my-test-organization6666"});
+    });
+
+    it('should be able to create data for a dataset', async() => {
+        const config = new ApiConfig();
+        const client = new Ckan(config.Url, config.Key);
+        await client.createOrganization({id: "my-test-organization6666", name: "my-test-organization6666"});
+        await client.createDataset('test-dataset6666','my-test-organization6666');
+        const response =await client.createDataForDataset({resource: {package_id: 'test-dataset6666'}, records: [{'col1': 12, 'col2': 12}]})
+        console.log(response);
     });
 });

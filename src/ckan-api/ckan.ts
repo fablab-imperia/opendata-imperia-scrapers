@@ -6,6 +6,8 @@ import { OrganizationCreateParams } from './dtos/organization-create-params';
 import { OrganizationDeleteParameters } from './dtos/organization-delete-params';
 import { Client } from 'ckan';
 import { DatasetDeleteParameters } from './dtos/dataset-delete-params';
+import { CreateContextOptions } from 'vm';
+import { DatastoreCreateParams, ResourceParams } from './dtos/datastore-create-params';
 
 
 export class Ckan {
@@ -47,6 +49,14 @@ export class Ckan {
 
     deleteDataset(id: DatasetDeleteParameters): Promise<CkanResponse<string>|string> {
         return this.makePromiseForAction<any>('package_delete', id);
+    }
+
+    createDatasetResource(params: ResourceParams) {
+
+    }
+
+    createDataForDataset(params: DatastoreCreateParams): Promise<CkanResponse<any>|string> {
+        return this.makePromiseForAction<any>('datastore_create', params);
     }
 
 }
