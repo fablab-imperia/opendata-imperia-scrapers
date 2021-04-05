@@ -1,14 +1,15 @@
+
 from ckanapi import RemoteCKAN
-from ckanapi.errors import NotFound
 
 client = RemoteCKAN('http://localhost:5000','c59ccfa4-10d2-451b-8601-6f554cd15c83')
-#client.create_dataset({ 'name': 'test-dict',
-#                        'author': 'Fablab Imperia', 
-#                        'author_email': 'info@fablabimperia.org', 
-#                        'mantainer': 'Fablab Imperia', 'mantainer_email': 'info@fablabimperia.org', 
-#                        'owner_org': 'fablab-imperia'})*/
+pkg = client.call_action('package_create', { 'name': 'test-dict6',
+                        'author': 'Fablab Imperia', 
+                        'author_email': 'info@fablabimperia.org', 
+                        'mantainer': 'Fablab Imperia', 'mantainer_email': 'info@fablabimperia.org', 
+                        'owner_org': 'fablab-imperia'})
 
 
+print(pkg['id'])
 
 #newdataset = client.call_action('datastore_create', 
 #{
@@ -23,9 +24,9 @@ client = RemoteCKAN('http://localhost:5000','c59ccfa4-10d2-451b-8601-6f554cd15c8
 #    'resource_id': '3d47bcc8-4d33-49d3-83bd-1e6929b32406',
 #    'records': [{'first_col': 'Test 1', 'second_col': 'Test 22'}, {'first_col': 'Test 3', 'second_col': 'Test 444'}, {'first_col': 'Test 7', 'second_col': 'Test 99'}]
 #}) 
-try:
-    dst = client.call_action('package_show', {'id':'test-dict'})
-    print(dst)
-except NotFound:
-    print("Not existing")
+#try:
+    # dst = client.call_action('package_show', {'id':'test-dict'})
+ 
+#except NotFound:
+#    print("Not existing")
 
