@@ -11,7 +11,7 @@ fields = [{'id': 'col1', 'type': 'text', 'info': {'label': 'The first column'}},
 primary_key = ['col1']
 api.create_dataset(dataset_params,fields,primary_key)
 
-dataset = api.get_dataset('test-dict10')
+dataset = api.get_dataset('test-dict11')
 print(dataset)
 api.upsert_dataset(dataset['resources'][0]['id'], [{'col1': 'value1','second_col': 'value3'}])
 api.delete_dataset('test-dict10')

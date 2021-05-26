@@ -9,5 +9,5 @@ class Dataset:
     
 class ScraperBase(abc.ABC):
     @abc.abstractmethod
-    def scrape(url: str) -> Dataset:
+    def scrape() -> Dataset:
         pass
